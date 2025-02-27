@@ -2,12 +2,23 @@ let theButtons = document.querySelectorAll('#buttonHolder img'),
     puzzleBoard = document.querySelector('.puzzle-board'),
     puzzlePieces = document.querySelectorAll('.puzzle-pieces img'),
     dropZones = document.querySelectorAll('.drop-zone'),
+    gameBoard = document.querySelector('.puzzle-pieces'), // for bug #2
+
     draggedPiece;
 
 function changeBGImage() {
     // console.log('chagedbg');
     puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
     //bug fix #2: should do here, fairly short
+    // checks if theres a first child, if yes appends it back to the main parent, the gameboard otherwise outputs empty
+    dropZones.forEach(zone => {
+        if (!zone.firstChild){ // i learned that firstchild functions doesnt return true or false so i used notFirstChild = !zone.firstChild to check if null or not
+            console.log("Empty")
+        }
+        else {
+            gameBoard.appendChild(zone.firstChild); //draggedPiece removes this instance wholly instaed of cloning it so i replaced it with zone.firstchild which would leave the draddge piece container be and focus on the children of the zones.
+        }
+    });
 }
 
 function handlesStartDrag() {
