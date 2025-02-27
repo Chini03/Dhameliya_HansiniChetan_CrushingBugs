@@ -3,7 +3,10 @@ let theButtons = document.querySelectorAll('#buttonHolder img'),
     puzzlePieces = document.querySelectorAll('.puzzle-pieces img'),
     dropZones = document.querySelectorAll('.drop-zone'),
     gameBoard = document.querySelector('.puzzle-pieces'), // for bug #2
-
+    puzzlePieceTopLeft = document.querySelector('#topLeft'), // for bonus bug
+    puzzlePieceTopRight = document.querySelector('#topRight'), // for bonus bug
+    puzzlePieceBottomLeft = document.querySelector('#bottomLeft'), // for bonus bug
+    puzzlePieceBottomRight = document.querySelector('#bottomRight'), // for bonus bug
     draggedPiece;
 
 function changeBGImage() {
@@ -19,6 +22,13 @@ function changeBGImage() {
             gameBoard.appendChild(zone.firstChild); //draggedPiece removes this instance wholly instaed of cloning it so i replaced it with zone.firstchild which would leave the draddge piece container be and focus on the children of the zones.
         }
     });
+
+
+    // to change the puzzle piece image, same logic as the backgroundImage change
+    puzzlePieceTopLeft.setAttribute("src", `images/topLeft${this.id}.jpg`);
+    puzzlePieceTopRight.setAttribute("src", `images/topRight${this.id}.jpg`);
+    puzzlePieceBottomLeft.setAttribute("src", `images/bottomLeft${this.id}.jpg`);
+    puzzlePieceBottomRight.setAttribute("src", `images/bottomRight${this.id}.jpg`);
 }
 
 function handlesStartDrag() {
