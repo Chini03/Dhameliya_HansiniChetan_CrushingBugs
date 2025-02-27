@@ -23,6 +23,7 @@ function handleDragOver(e) {
 function handleDrop(e) {
     console.log('dropped');
     e.preventDefault();
+    this.appendChild(draggedPiece);
     //bug fix #1: should do here, its fairly short
 }
 
