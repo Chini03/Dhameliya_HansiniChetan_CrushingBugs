@@ -23,8 +23,15 @@ function handleDragOver(e) {
 function handleDrop(e) {
     console.log('dropped');
     e.preventDefault();
-    this.appendChild(draggedPiece);
     //bug fix #1: should do here, its fairly short
+    // checks if child count is greater than 0 and if yes, outputs "occupied" otherwise appends the piece to drop it onto the zone
+    if (this.childElementCount > 0) {
+        console.log("Occupied")
+    }
+    else {
+        this.appendChild(draggedPiece);
+    }
+
 }
 
 theButtons.forEach(button => button.addEventListener('click', changeBGImage));
